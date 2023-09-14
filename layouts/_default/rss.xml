@@ -44,10 +44,9 @@
       {{- if site.Params.ShowFullTextinRSS }}
       <content:encoded>{{ (printf "<![CDATA[%s]]>" .Content) | safeHTML }}</content:encoded>
       {{- end }}
-      {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
-      {{- range ($.GetTerms $tags) }}
-      <category>{{ (printf "<![CDATA[%s]]>" .LinkTitle) | safeHTML }}</category>
-      {{- end }}
+      {{ range .Params.tags }}
+      <category>{{ (printf "<![CDATA[%s]]>" .) | safeHTML }}</category>
+      {{ end }}
     </item>
     {{- end }}
     {{ end }}
