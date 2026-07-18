@@ -1,4 +1,4 @@
-{{ $related := first 5 (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
+{{ $related := .Site.RegularPages.Related . | first 5 }}
 {{ with $related }}
   <article class="related">
     <header>
